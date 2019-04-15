@@ -14,7 +14,7 @@ class Task(models.Model):
     deadline = models.DateField(null=True)
     completed = models.BooleanField(default=False)
 
-    basket = models.ForeignKey(Basket, related_name="tasks", on_delete=models.CASCADE)
+    basket = models.ForeignKey(Basket, related_name="tasks", on_delete=models.CASCADE, null=False)
 
     def __str__(self):
         return self.message
