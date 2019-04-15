@@ -1,0 +1,43 @@
+[
+   {
+      "model":"common.task",
+      "pk":1,
+      "fields":{
+         "message":"Math",
+         "created":"2019-04-15",
+         "deadline":"2019-04-25",
+         "completed":false,
+         "basket":1
+      }
+   },
+   {
+      "model":"common.task",
+      "pk":2,
+      "fields":{
+         "message":"English language",
+         "created":"2019-04-15",
+         "deadline":null,
+         "completed":false,
+         "basket":1
+      }
+   },
+   {
+      "model":"common.task",
+      "pk":3,
+      "fields":{
+         "message":"Spanish language",
+         "created":"2019-04-15",
+         "deadline":null,
+         "completed":false,
+         "basket":1
+      }
+   },
+   {
+      "model":"common.basket",
+      "pk":1,
+      "fields":{
+         "title":"Homework",
+         "owner":1
+      }
+   }
+]

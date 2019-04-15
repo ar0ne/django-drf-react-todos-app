@@ -1,4 +1,4 @@
-## One more TODO-like app [DRF + Redux]
+## Yet another TODO-like app [DRF + Redux]
 
 `$ python3 -m venv env`
 
@@ -6,4 +6,10 @@
 
 `(env) $ pip install -r requirements.dev.txt`
 
-`...`
+etc.
+
+`$ cd frontend`
+
+`$ npm i`
+
+`$ npm run dev`
