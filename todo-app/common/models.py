@@ -1,11 +1,21 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
 class Basket(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
 
+    owner = models.ForeignKey(get_user_model(),
+                              related_name="owner",
+                              blank=False,
+                              null=False,
+                              on_delete=models.CASCADE)
+
     def __str__(self):
         return self.title
+
+    def is_owner(self, user):
+        return user == self.owner
 
 
 class Task(models.Model):
@@ -21,5 +31,8 @@ class Task(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+    def is_owner(self, user):
+        return self.basket.is_owner(user)
 
 
