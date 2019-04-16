@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 
 import Tasks from './Tasks';
+import AddTaskForm from './AddTaskForm';
 
 
 class Basket extends Component {
     static propTypes = {
-         data: PropTypes.array.isRequired
+         baskets: PropTypes.array.isRequired
     };
 
     constructor(props) {
@@ -14,21 +15,22 @@ class Basket extends Component {
     }
 
     render () {
-        let data = this.props.data;
-        if (!data.length) {
+        let baskets = this.props.baskets;
+        if (!baskets.length) {
             return (<p>Nothing to show</p>)
         }
         return (
             <div className="basket">
                 <h2 className="title">Baskets</h2>
                 <div>
-                    {data.map((basket, index) =>
+                    {baskets.map((basket, index) =>
                         <div key={index}>
                             <p>{basket.id} - {basket.title}</p>
-                            <Tasks data={basket.tasks} />
+                            <Tasks tasks={basket.tasks} />
                         </div>
                     )}
                 </div>
+                <AddTaskForm />
             </div>
         )
     }

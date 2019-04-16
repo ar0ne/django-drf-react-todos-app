@@ -8,11 +8,9 @@ import Register from './Register';
 
 
 const App = () => (
-    <div>
+    <div className="content">
         <DataProvider endpoint="api/basket/"
-            render={data => <Basket data={data} />} />
-        <Login />
-        <Register />
+            render={data => <Basket baskets={data} />} />
     </div>
 );
 

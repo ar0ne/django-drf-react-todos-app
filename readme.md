@@ -13,3 +13,12 @@ etc.
 `$ npm i`
 
 `$ npm run dev`
+
+## Ideas
+
+[] Elastic Search
+[] Docker / Docker-compose
+[] Deployment scripts
+[] Nginx or Apache ?
+[] Celery for notification about tasks
+[] Redis

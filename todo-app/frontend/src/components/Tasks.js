@@ -3,26 +3,54 @@ import PropTypes from 'prop-types';
 
 class Tasks extends Component {
 
-   constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
-            data: []
-        };
+            tasks: []
+        }
     }
 
+    componentDidMount() {
+        const { tasks } = this.props;
+        this.setState({
+            tasks: tasks
+         });
+    }
+
+    handleCheckboxChange = event => {
+        const { name, value } = event.target;
+
+        let { tasks } = this.state;
+
+        let found = tasks.find(t => t.id == name);
+
+        found.completed = !found.completed;
+
+        this.setState({
+            tasks
+        });
+    }
 
     render() {
-        let data = this.props.data;
-        if (!data.length) {
+//        let tasks = this.props.tasks;
+        let tasks = this.state.tasks;
+
+        if (!tasks.length) {
             return (
                 <p>No tasks in basket</p>
             );
         }
         return (
             <ul className="tasks">
-            {data.map((task, index) =>
+            {tasks.map((task, index) =>
                 <li
                     key={index}>
+                    <input
+                        type="checkbox"
+                        checked={task.completed}
+                        name={task.id}
+                        onChange={this.handleCheckboxChange}
+                    />
                     {task.message}
                 </li>
             )}
