@@ -9,14 +9,6 @@ export default class App extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            currentUser: null,
-        };
-    }
-
-    componentDidMount() {
-        // subscribe to authservice
     }
 
     render () {

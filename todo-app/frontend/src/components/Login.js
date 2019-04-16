@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 
+import { userService } from '../services/user.service';
 
 export default class Login extends Component {
     constructor(props) {
@@ -17,7 +18,12 @@ export default class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log("Do login...", this.state);
+        const { username, password } = this.state;
+        userService
+            .login(username, password)
+            .then(response => {
+                console.log('logged in', response);
+            });
     }
 
     handleChange = event => {

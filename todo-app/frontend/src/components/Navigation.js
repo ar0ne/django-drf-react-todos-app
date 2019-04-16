@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-import Index from './Index';
+import HomePage from './HomePage';
 import Login from './Login';
 import Register from './Register';
 
@@ -32,7 +32,7 @@ export default class Navigation extends Component {
                         </ul>
                     </nav>
 
-                    <Route exact path="/" component={Index} />
+                    <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={Login} />
                     <Route path="/registration" component={Register} />
                 </div>

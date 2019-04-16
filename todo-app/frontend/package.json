@@ -17,12 +17,13 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "weak-key": "^1.0.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.1.2",
+    "rxjs": "^6.3.3"
+  }
 }
