@@ -38,11 +38,11 @@ class Basket extends Component {
                     {baskets.map((basket, index) =>
                         <div key={index}>
                             <p>{basket.id} - {basket.title}</p>
-                            <Tasks tasks={basket.tasks} />
+                            <Tasks tasks={basket.tasks} basket_id={basket.id}/>
+                            <AddTaskForm basket_id={basket.id} />
                         </div>
                     )}
                 </div>
-                <AddTaskForm />
             </div>
         )
     }

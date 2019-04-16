@@ -1,12 +1,23 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 
+import { basketService } from "../services/basket.service";
 
 export default class AddTaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ""
+            message: "",
+            basket_id: null
+        }
+    }
+
+    componentDidMount() {
+        const { basket_id } = this.props;
+        if (basket_id) {
+            this.setState({
+                basket_id: basket_id
+            });
         }
     }
 
@@ -18,6 +29,15 @@ export default class AddTaskForm extends Component {
     handleSubmit = event => {
         event.preventDefault();
         console.log('add task...', this.state);
+
+        const { basket_id, message } = this.state;
+
+        basketService.addTask(basket_id, {
+            message: message
+        })
+        .then(response => {
+            console.log('add task', response);
+        });
     }
 
     isValidForm () {

@@ -1,26 +1,30 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
 
+import { basketService } from '../services/basket.service';
+
 class Tasks extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            tasks: []
+            tasks: [],
+            basket_id: null
         }
     }
 
     componentDidMount() {
-        const { tasks } = this.props;
+        const { basket_id, tasks } = this.props;
         this.setState({
-            tasks: tasks
+            tasks: tasks,
+            basket_id: basket_id
         });
     }
 
     handleCheckboxChange = event => {
         const { name, value } = event.target;
 
-        let { tasks } = this.state;
+        let { basket_id, tasks } = this.state;
 
         let found = tasks.find(t => t.id == name);
 
@@ -29,6 +33,11 @@ class Tasks extends Component {
         this.setState({
             tasks
         });
+
+        basketService.updateTasks(basket_id, found)
+            .then(response => {
+                console.log('updated task', response);
+            });
     }
 
     render() {

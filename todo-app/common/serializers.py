@@ -11,7 +11,7 @@ from .models import (
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ('id', 'message', 'created', 'deadline', 'completed', )
+        fields = ('id', 'message', 'created', 'deadline', 'completed', 'basket',)
 
 
 class BasketSerializer(serializers.ModelSerializer):

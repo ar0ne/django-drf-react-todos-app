@@ -15,7 +15,8 @@ function getAuthHeaders() {
     const token = authTokenSubject.value;
     if (token) {
         return {
-            "Authorization": `Token ${token}`
+            "Authorization": `Token ${token}`,
+            'Content-Type': 'application/json'
         }
     }
     return {};
