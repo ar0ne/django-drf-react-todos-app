@@ -6,16 +6,28 @@ import AddTaskForm from './AddTaskForm';
 
 
 class Basket extends Component {
-    static propTypes = {
-         baskets: PropTypes.array.isRequired
-    };
+//    static propTypes = {
+//         baskets: PropTypes.array.isRequired
+//    };
 
     constructor(props) {
         super(props);
+        this.state = {
+            baskets: []
+        }
+    }
+
+    componentDidMount() {
+        const { baskets } = this.props;
+        if (baskets) {
+            this.setState({
+                baskets: baskets
+            });
+        }
     }
 
     render () {
-        let baskets = this.props.baskets;
+        let baskets = this.state.baskets;
         if (!baskets.length) {
             return (<p>Nothing to show</p>)
         }

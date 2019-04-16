@@ -2,17 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DataProvider from './DataProvider';
 
-import Basket from './Basket';
-import Login from './Login';
-import Register from './Register';
+import Navigation from './Navigation';
 
 
-const App = () => (
-    <div className="content">
-        <DataProvider endpoint="api/basket/"
-            render={data => <Basket baskets={data} />} />
-    </div>
-);
+export default class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentUser: null,
+        };
+    }
+
+    componentDidMount() {
+        // subscribe to authservice
+    }
+
+    render () {
+        return (
+            <div className="content">
+                <Navigation />
+            </div>
+        );
+    }
+}
 
 const wrapper = document.getElementById('app');
 

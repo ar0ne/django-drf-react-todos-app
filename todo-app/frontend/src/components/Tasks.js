@@ -14,7 +14,7 @@ class Tasks extends Component {
         const { tasks } = this.props;
         this.setState({
             tasks: tasks
-         });
+        });
     }
 
     handleCheckboxChange = event => {
@@ -32,7 +32,6 @@ class Tasks extends Component {
     }
 
     render() {
-//        let tasks = this.props.tasks;
         let tasks = this.state.tasks;
 
         if (!tasks.length) {
