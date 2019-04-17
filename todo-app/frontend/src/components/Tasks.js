@@ -50,18 +50,18 @@ class Tasks extends Component {
         }
         return (
             <ul className="tasks">
-            {tasks.map((task, index) =>
-                <li
-                    key={index}>
-                    <input
-                        type="checkbox"
-                        checked={task.completed}
-                        name={task.id}
-                        onChange={this.handleCheckboxChange}
-                    />
-                    {task.message}
-                </li>
-            )}
+                {tasks.map((task, index) =>
+                    <li
+                        key={index}>
+                        <input
+                            type="checkbox"
+                            checked={task.completed}
+                            name={task.id}
+                            onChange={this.handleCheckboxChange}
+                        />
+                        {task.message}
+                    </li>
+                )}
             </ul>
         )
     }

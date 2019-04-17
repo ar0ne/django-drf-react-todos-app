@@ -1,13 +1,20 @@
 import React, {Component} from "react";
+import { Redirect } from 'react-router';
 
 import { userService } from '../services/user.service';
 
+import Content from './Content';
+
+
 export default class Login extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            loggedIn: false,
+            error: null,
         }
     }
 
@@ -22,7 +29,12 @@ export default class Login extends Component {
         userService
             .login(username, password)
             .then(response => {
-                console.log('logged in', response);
+                this.setState({
+                    loggedIn: !!response['token'],
+                    username: "",
+                    password: "",
+                    error: response['error']
+                })
             });
     }
 
@@ -32,8 +44,18 @@ export default class Login extends Component {
     }
 
     render() {
+        const { loggedIn } = this.state;
+
+        if (loggedIn) {
+            console.log('redirected to homePage from login page');
+            return (
+                <Redirect to='/' />
+            )
+        }
+
         return (
             <div className="login">
+                <p className='error'>{this.state.error}</p>
                 <form name="form"
                     onSubmit={this.handleSubmit}>
 
@@ -42,6 +64,7 @@ export default class Login extends Component {
                         name="username"
                         type="text"
                         onChange={this.handleChange}
+                        value={this.state.username}
                     />
 
                     <label htmlFor="password">Password</label>
@@ -49,6 +72,7 @@ export default class Login extends Component {
                         name="password"
                         type="password"
                         onChange={this.handleChange}
+                        value={this.state.password}
                     />
 
                     <button

@@ -8,7 +8,6 @@ export const userService = {
     register,
     getAuthHeaders,
     authUserToken: authTokenSubject.asObservable(),
-    get getAuthUserTokenValue () { return authTokenSubject.value }
 }
 
 function getAuthHeaders() {
@@ -22,10 +21,7 @@ function getAuthHeaders() {
     return {};
 }
 
-
 function login (username, password) {
-    console.log("do login");
-
     const requestOptions = {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
@@ -36,21 +32,20 @@ function login (username, password) {
         .then(response => response.json())
         .then(response => {
             const token = response['token'];
-            localStorage.setItem("token", token);
-            authTokenSubject.next(token);
-
+            if (token) {
+                localStorage.setItem("token", token);
+                authTokenSubject.next(token);
+            }
             return response;
         })
         .catch(error => {
-            console.log(error.message);
-            return {};
+            return {}; // todo: fix
         });
 }
 
 function logout () {
     localStorage.removeItem('token');
     authTokenSubject.next(null);
-
     // @TODO: do I need to call real logout method?
 }
 

@@ -16,7 +16,7 @@ function getAll() {
         .then(response => response.json())
         .catch(error => {
             console.log(error.message);
-            return [];
+            return []; // todo: fix
         });
 }
 
@@ -31,7 +31,7 @@ function addTask(basket_id, task) {
         .then(response => response.json())
         .catch(error => {
             console.log(error.message);
-            return [];
+            return []; // todo: fix
         });
 }
 
@@ -47,6 +47,6 @@ function updateTasks(basket_id, task) {
         .then(response => response.json())
         .catch(error => {
             console.log(error.message);
-            return [];
+            return []; // todo: fix
         });
 }

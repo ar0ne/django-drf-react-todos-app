@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DataProvider from './DataProvider';
+
+import { userService } from '../services/user.service';
 
 import Navigation from './Navigation';
-
+import Content from './Content';
 
 export default class App extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render () {
         return (
