@@ -28,6 +28,11 @@ class BasketViewSet(viewsets.ModelViewSet):
     queryset = Basket.objects.all()
     serializer_class = BasketSerializer
 
+    def create(self, request, *args, **kwargs):
+        data = request.data
+        data.update({'owner': request.user.id})
+        return super().create(request, *args, **kwargs)
+
 
 class CreateTask(APIView):
     permission_classes = (IsAuthenticated, IsAuthenticatedOwnerOrStaff,)

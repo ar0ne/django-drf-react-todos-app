@@ -4,6 +4,9 @@ export const basketService = {
     getAll,
     addTask,
     updateTasks,
+    removeTask,
+    addBasket,
+    removeBasket,
 };
 
 function getAll() {
@@ -11,7 +14,6 @@ function getAll() {
         method: "GET",
         headers: userService.getAuthHeaders()
     }
-
     return fetch('/api/basket/', requestOptions)
         .then(response => response.json())
         .catch(error => {
@@ -49,4 +51,51 @@ function updateTasks(basket_id, task) {
             console.log(error.message);
             return []; // todo: fix
         });
+}
+
+
+function removeTask(basket_id, task_id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: userService.getAuthHeaders(),
+    }
+
+    return fetch(`/api/basket/${basket_id}/tasks/${task_id}/`, requestOptions)
+        .then(response => response.json())
+        .catch(error => {
+            console.log(error.message);
+            return []; // todo: fix
+        });
+}
+
+function addBasket(basket_name) {
+    const requestOptions = {
+        method: "POST",
+        headers: userService.getAuthHeaders(),
+        body: JSON.stringify({
+            title: basket_name
+        })
+    }
+
+    return fetch(`/api/basket/`, requestOptions)
+        .then(response => response.json())
+        .catch(error => {
+            console.log(error.message);
+            return []; // todo: fix
+        });
+}
+
+function removeBasket(basket_id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: userService.getAuthHeaders(),
+    }
+
+    return fetch(`/api/basket/${basket_id}/`, requestOptions)
+        .then(response => response.json())
+        .catch(error => {
+            console.log(error.message);
+            return []; // todo: fix
+        });
+
 }

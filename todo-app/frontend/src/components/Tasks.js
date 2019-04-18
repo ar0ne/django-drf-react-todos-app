@@ -30,18 +30,37 @@ class Tasks extends Component {
 
         found.completed = !found.completed;
 
-        this.setState({
-            tasks
-        });
-
         basketService.updateTasks(basket_id, found)
             .then(response => {
                 console.log('updated task', response);
+
+                // @TODO: dispatch action?
+                this.setState({
+                    tasks
+                });
+            });
+    }
+
+    handleDelete = event => {
+        const { name, value } = event.target;
+
+        let { basket_id, tasks } = this.state;
+
+        basketService.removeTask(basket_id, name)
+            .then(response => {
+                console.log('removed task', response);
+
+                delete tasks[name];
+
+                 // @TODO: dispatch action?
+                this.setState({
+                    tasks
+                });
             });
     }
 
     render() {
-        let tasks = this.state.tasks;
+        const { tasks } = this.state;
 
         if (!tasks.length) {
             return (
@@ -60,6 +79,11 @@ class Tasks extends Component {
                             onChange={this.handleCheckboxChange}
                         />
                         {task.message}
+
+                        <button
+                            onClick={this.handleDelete}
+                            name={task.id}
+                        >Delete</button>
                     </li>
                 )}
             </ul>

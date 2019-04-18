@@ -67,14 +67,15 @@ export default class Navigation extends Component {
         return (
              <BrowserRouter>
                 <div>
-
                     <nav>
                         { dynamicLinks }
                     </nav>
-                        <Route exact path="/" component={Content} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/logout" component={Logout} />
-                        <Route path="/registration" component={Register} />
+                    <Route exact path="/"
+                        render={(props) => <Content {...props} loggedIn={this.state.loggedIn}/>}
+                    />
+                    <Route path="/login" component={Login} />
+                    <Route path="/logout" component={Logout} />
+                    <Route path="/registration" component={Register} />
                 </div>
              </BrowserRouter>
         );
