@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { userService } from '../services/user.service';
-
 import Navigation from './Navigation';
-import Content from './Content';
 
 export default class App extends React.Component {
 

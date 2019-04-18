@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import { basketService } from "../services/basket.service";
 
 export default class AddTaskForm extends Component {
+
+    static propTypes = {
+         basket_id: PropTypes.number.isRequired
+    };
+
     constructor(props) {
         super(props);
         this.state = {

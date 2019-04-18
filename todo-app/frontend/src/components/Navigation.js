@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { takeUntil } from 'rxjs/operators'
 import { Subject } from 'rxjs';
+
 import Content from './Content';
 import Login from './Login';
 import Logout from './Logout';
-import Register from './Register';
+import Registration from './Registration';
 
 import { userService } from '../services/user.service';
 
@@ -75,7 +76,7 @@ export default class Navigation extends Component {
                     />
                     <Route path="/login" component={Login} />
                     <Route path="/logout" component={Logout} />
-                    <Route path="/registration" component={Register} />
+                    <Route path="/registration" component={Registration} />
                 </div>
              </BrowserRouter>
         );

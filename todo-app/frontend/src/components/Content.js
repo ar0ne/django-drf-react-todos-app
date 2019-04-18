@@ -1,13 +1,12 @@
 import React from 'react';
-import { takeUntil } from 'rxjs/operators'
-import { Subject } from 'rxjs';
-
-import { userService } from '../services/user.service';
+import PropTypes from 'prop-types';
 
 import Baskets from './Baskets';
-import Navigation from './Navigation';
 
 export default class Content extends React.Component {
+    static propTypes = {
+         loggedIn: PropTypes.bool.isRequired
+    };
 
     render () {
         const { loggedIn } = this.props;

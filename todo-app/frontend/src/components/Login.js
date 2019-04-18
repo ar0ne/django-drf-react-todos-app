@@ -3,8 +3,6 @@ import { Redirect } from 'react-router';
 
 import { userService } from '../services/user.service';
 
-import Content from './Content';
-
 
 export default class Login extends Component {
 

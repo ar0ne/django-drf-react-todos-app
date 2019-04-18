@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class IsAuthenticatedOwnerOrStaff(permissions.IsAdminUser):
+class IsAuthenticatedOwnerOrStaff(permissions.IsAuthenticated):
     message = 'Only owners are allowed.'
 
     def has_object_permission(self, request, view, obj):

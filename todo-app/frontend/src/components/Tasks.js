@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import { basketService } from '../services/basket.service';
 
 class Tasks extends Component {
+    static propTypes = {
+        basket_id: PropTypes.number.isRequired,
+        tasks: PropTypes.array.isRequired,
+    };
 
     constructor(props) {
         super(props);

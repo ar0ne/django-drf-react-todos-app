@@ -7,7 +7,6 @@ from rest_framework import (
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated
 
 from .models import (
     Basket,
@@ -24,8 +23,7 @@ from .permissions import (
 
 
 class BasketViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated, IsAuthenticatedOwnerOrStaff,)
-    queryset = Basket.objects.all()
+    permission_classes = (IsAuthenticatedOwnerOrStaff,)
     serializer_class = BasketSerializer
 
     def create(self, request, *args, **kwargs):
@@ -33,9 +31,14 @@ class BasketViewSet(viewsets.ModelViewSet):
         data.update({'owner': request.user.id})
         return super().create(request, *args, **kwargs)
 
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return Basket.objects.all()
+        return Basket.objects.filter(owner=self.request.user)
+
 
 class CreateTask(APIView):
-    permission_classes = (IsAuthenticated, IsAuthenticatedOwnerOrStaff,)
+    permission_classes = (IsAuthenticatedOwnerOrStaff,)
 
     def post(self, request, pk):
         data = request.data
@@ -48,16 +51,16 @@ class CreateTask(APIView):
 
 
 class TaskList(generics.ListAPIView):
-    permission_classes = (IsAuthenticated, IsAuthenticatedOwnerOrStaff,)
+    permission_classes = (IsAuthenticatedOwnerOrStaff,)
+    serializer_class = TaskSerializer
 
     def get_queryset(self):
         basket_id = self.kwargs['pk']
         return Task.objects.filter(basket_id=basket_id)
-    serializer_class = TaskSerializer
 
 
 class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated, IsAuthenticatedOwnerOrStaff,)
+    permission_classes = (IsAuthenticatedOwnerOrStaff,)
     serializer_class = TaskSerializer
 
     def get_queryset(self):

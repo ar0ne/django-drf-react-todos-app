@@ -8,9 +8,9 @@ import { basketService } from '../services/basket.service';
 
 
 class Baskets extends Component {
-//    static propTypes = {
-//         baskets: PropTypes.array.isRequired
-//    };
+    static propTypes = {
+         loggedIn: PropTypes.bool.isRequired
+    };
 
     constructor(props) {
         super(props);

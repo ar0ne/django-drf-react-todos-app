@@ -49,6 +49,16 @@ function logout () {
     // @TODO: do I need to call real logout method?
 }
 
-function register(data) {
+function register(username, password, email) {
+    const requestOptions = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ username, password, email })
+    }
 
+    return fetch('/api/user/register/', requestOptions)
+        .then(response => response.json())
+        .catch(error => {
+            return {}; // todo: fix
+        });
 }

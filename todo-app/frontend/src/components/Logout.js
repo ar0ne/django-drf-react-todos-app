@@ -2,8 +2,6 @@ import React from "react";
 import { Redirect } from 'react-router';
 import { userService } from '../services/user.service';
 
-import Content from './Content';
-
 
 export default class Logout extends React.Component {
 
