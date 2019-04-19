@@ -13,7 +13,7 @@ export default class AddTaskForm extends Component {
         super(props);
         this.state = {
             message: "",
-            deadline: null,
+            deadline: new Date(),
             basket_id: null
         }
     }
@@ -34,7 +34,6 @@ export default class AddTaskForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log('add task...', this.state);
 
         const { basket_id, message, deadline } = this.state;
 
@@ -44,6 +43,11 @@ export default class AddTaskForm extends Component {
         })
         .then(response => {
             console.log('add task', response);
+            this.setState({
+                message: "",
+                deadline: new Date(),
+            })
+            this.props.refresh();
         });
     }
 
@@ -60,11 +64,13 @@ export default class AddTaskForm extends Component {
                 <input
                     type="text"
                     name="message"
+                    value={this.state.message}
                     onChange={this.handleChange}
                 />
                 <input
                     type="date"
                     name="deadline"
+                    value={this.state.deadline}
                     onChange={this.handleChange}
                 />
                 <button

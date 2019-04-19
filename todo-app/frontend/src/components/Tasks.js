@@ -26,7 +26,7 @@ class Tasks extends Component {
     }
 
     handleCheckboxChange = event => {
-        const { name, value } = event.target;
+        const { name } = event.target;
 
         let { basket_id, tasks } = this.state;
 
@@ -36,30 +36,18 @@ class Tasks extends Component {
 
         basketService.updateTasks(basket_id, found)
             .then(response => {
-                console.log('updated task', response);
-
-                // @TODO: dispatch action?
-                this.setState({
-                    tasks
-                });
+                this.props.refresh();
             });
     }
 
     handleDelete = event => {
-        const { name, value } = event.target;
+        const { name } = event.target;
 
         let { basket_id, tasks } = this.state;
 
         basketService.removeTask(basket_id, name)
             .then(response => {
-                console.log('removed task', response);
-
-                delete tasks[name];
-
-                 // @TODO: dispatch action?
-                this.setState({
-                    tasks
-                });
+                this.props.refresh();
             });
     }
 
@@ -75,7 +63,7 @@ class Tasks extends Component {
             <ul className="tasks">
                 {tasks.map((task, index) =>
                     <li
-                        key={index}>
+                        key={task.id}>
                         <input
                             type="checkbox"
                             checked={task.completed}
