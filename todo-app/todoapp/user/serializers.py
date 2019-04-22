@@ -1,25 +1,6 @@
 from django.contrib.auth import get_user_model
-from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-
-from .models import (
-    Task,
-    Basket,
-)
-
-
-class TaskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = ('id', 'message', 'created', 'deadline', 'completed', 'basket',)
-
-
-class BasketSerializer(serializers.ModelSerializer):
-    tasks = TaskSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Basket
-        fields = '__all__'
+from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):

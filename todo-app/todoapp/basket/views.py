@@ -1,23 +1,21 @@
-from django.contrib.auth import authenticate
 from rest_framework import (
     generics,
     status,
     viewsets,
+    views,
 )
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
 
-from .models import (
+
+from todoapp.basket.models import (
     Basket,
     Task,
 )
-from .serializers import (
+from todoapp.basket.serializers import (
     BasketSerializer,
     TaskSerializer,
-    UserSerializer,
 )
-from .permissions import (
+from todoapp.basket.permissions import (
     IsAuthenticatedOwnerOrStaff,
 )
 
@@ -37,7 +35,7 @@ class BasketViewSet(viewsets.ModelViewSet):
         return Basket.objects.filter(owner=self.request.user)
 
 
-class CreateTask(APIView):
+class CreateTask(views.APIView):
     permission_classes = (IsAuthenticatedOwnerOrStaff,)
 
     def post(self, request, pk):
@@ -68,30 +66,3 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
         task_id = self.kwargs['pk']
         return Task.objects.filter(basket_id=basket_id, pk=task_id)
 
-
-class UserCreate(generics.CreateAPIView):
-    serializer_class = UserSerializer
-    permission_classes = ()
-    authentication_classes = ()
-
-
-class LoginView(APIView):
-    permission_classes = ()
-    authentication_classes = ()
-
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
-            if not hasattr(user, 'auth_token') or user.auth_token is None:
-                Token.objects.create(user=user)
-            return Response({'token': user.auth_token.key})
-        else:
-            return Response({'error': "Wrong credentials."}, status=status.HTTP_403_FORBIDDEN)
-
-
-class LogoutView(APIView):
-    def post(self, _):
-        Token.objects.filter(key=self.request.auth).delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
