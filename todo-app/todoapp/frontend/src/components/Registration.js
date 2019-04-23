@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from 'react-router';
 
 import { userService } from '../services/user.service';
 
@@ -10,6 +11,7 @@ export default class Registration extends Component {
             email: "",
             password1: "",
             password2: "",
+            registered: false
         }
     }
 
@@ -23,13 +25,12 @@ export default class Registration extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log("Do registration...", this.state);
-
         const {username, password1, email} = this.state;
 
         userService.register(username, password1, email)
             .then(response => {
                 console.log(response);
+                this.setState({registered: !!response['username']})
             });
 
     }
@@ -40,6 +41,15 @@ export default class Registration extends Component {
     }
 
     render() {
+        const { registered } = this.state;
+
+        if (registered) {
+            console.log('redirected');
+            return (
+                <Redirect to='/' />
+            )
+        }
+
         return (
             <div className="register">
                 <form name="form"

@@ -1,4 +1,4 @@
-## Yet another TODOs app [DRF + Redux]
+## Yet another TODOs app [DRF + ReactJS]
 
 `$ python3 -m venv env`
 

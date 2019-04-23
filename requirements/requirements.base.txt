@@ -2,3 +2,10 @@ Django==2.2
 pytz==2019.1
 sqlparse==0.3.0
 djangorestframework==3.9.2
+
+environ==1.0
+argon2-cffi==19.1.0
+
+django-environ==0.4.5  # https://github.com/joke2k/django-environ
+django-filter==2.1.0  # https://github.com/carltongibson/django-filter
+django-cors-headers==2.5.2  # https://github.com/ottoyiu/django-cors-headers

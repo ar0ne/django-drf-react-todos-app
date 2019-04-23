@@ -17,6 +17,9 @@ class Basket(models.Model):
     def is_owner(self, user):
         return user == self.owner
 
+    class Meta:
+        ordering = ('id',)
+
 
 class Task(models.Model):
     message = models.CharField(max_length=250, null=False, blank=False)
@@ -29,10 +32,8 @@ class Task(models.Model):
     def __str__(self):
         return self.message
 
-    class Meta:
-        ordering = ('created',)
-
     def is_owner(self, user):
         return self.basket.is_owner(user)
 
-
+    class Meta:
+        ordering = ('created',)
