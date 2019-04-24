@@ -1,1 +1,3 @@
 -r requirements.base.txt
+
+psycopg2==2.8.2 --no-binary psycopg2  # https://github.com/psycopg/psycopg2

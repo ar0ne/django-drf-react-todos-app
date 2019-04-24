@@ -7,13 +7,14 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='0x#0uwpz&zelz2tu9wat6eoq@3@9bhpn_
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '0.0.0.0'
+    '0.0.0.0',
+    'todoapp.dom'
 ]
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(ROOT_DIR, 'db.sqlite3'),
     }
 }
 

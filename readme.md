@@ -22,3 +22,23 @@ etc.
 [] Nginx or Apache ?
 [] Celery for notification about tasks
 [] Redis
+
+
+## Deployment to Apache
+
+```
+sudo pip install -r requirements/requirements.prod.txt
+
+cd todo-app
+
+python manage.py migrate --settings=config.settings.production
+
+python manage.py collectstatic --settings=config.settings.production --no-input
+
+
+sudo systemctl -l reload httpd.service
+
+
+sudo systemctl -l status httpd.service
+
+```

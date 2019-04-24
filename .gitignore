@@ -1,9 +1,13 @@
-env/
+*.venv/
 .idea
 *.pyc
-db.sqlite3
+*.sqlite3
 
 node_modules/
 
 static/
 .vscode
+.env
+
+static/
+staticfiles/
