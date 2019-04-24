@@ -9,3 +9,8 @@ argon2-cffi==19.1.0
 django-environ==0.4.5  # https://github.com/joke2k/django-environ
 django-filter==2.1.0  # https://github.com/carltongibson/django-filter
 django-cors-headers==2.5.2  # https://github.com/ottoyiu/django-cors-headers
+
+celery==4.3.0
+celery[redis]
+django-celery-results==1.0.4
+redis==3.2.1

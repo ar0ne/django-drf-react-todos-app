@@ -4,7 +4,7 @@
 
 `$ source ./env/bin/activate`
 
-`(env) $ pip install -r requirements.dev.txt`
+`(env) $ pip install -r requirements/dev.txt`
 
 etc.
 
@@ -26,8 +26,10 @@ etc.
 
 ## Deployment to Apache
 
+See `deployment` directory for details.
+
 ```
-sudo pip install -r requirements/requirements.prod.txt
+sudo pip install -r requirements/prod.txt
 
 cd todo-app
 
@@ -42,3 +44,16 @@ sudo systemctl -l reload httpd.service
 sudo systemctl -l status httpd.service
 
 ```
+
+
+## Redis
+
+```
+cd todo-app
+celery worker -A todoapp.taskapp -l info
+```
+
+```
+docker run -d -p 6379:6379 redis
+```
+
