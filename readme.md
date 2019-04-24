@@ -31,10 +31,11 @@ sudo pip install -r requirements/requirements.prod.txt
 
 cd todo-app
 
-python manage.py migrate --settings=config.settings.production
+python manage.py migrate --run-syncdb --settings=config.settings.production
 
 python manage.py collectstatic --settings=config.settings.production --no-input
 
+python manage.py createsuperuser --settings=config.settings.production
 
 sudo systemctl -l reload httpd.service
 
