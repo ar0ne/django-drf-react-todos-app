@@ -19,7 +19,7 @@ etc.
 [] Elastic Search
 [] Docker / Docker-compose
 [] Deployment scripts
-[] Nginx or Apache ?
+[] Nginx
 [] Celery for notification about tasks
 [] Redis
 
@@ -38,7 +38,6 @@ python manage.py collectstatic --settings=config.settings.production --no-input
 python manage.py createsuperuser --settings=config.settings.production
 
 sudo systemctl -l reload httpd.service
-
 
 sudo systemctl -l status httpd.service
 
