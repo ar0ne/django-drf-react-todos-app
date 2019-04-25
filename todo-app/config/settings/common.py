@@ -49,9 +49,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'todoapp.frontend.apps.FrontendConfig',
+    'frontend.apps.FrontendConfig',
     'todoapp.basket.apps.BasketConfig',
     'todoapp.user.apps.UserConfig',
+    'todoapp.mailinglist.apps.MailingListConfig',
 
     'todoapp.taskapp.celery.CeleryAppConfig',
 ]

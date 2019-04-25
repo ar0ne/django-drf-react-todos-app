@@ -11,3 +11,5 @@ node_modules/
 /**/static/*
 !/**/static/favicon.ico
 !/**/static/robot.txt
+
+celerybeat*

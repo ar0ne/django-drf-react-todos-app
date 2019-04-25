@@ -22,6 +22,14 @@ class CeleryAppConfig(AppConfig):
         installed_apps = [app_config.name for app_config in apps.get_app_configs()]
         app.autodiscover_tasks(lambda: installed_apps, force=True)
 
+        app.conf.beat_schedule = {
+            'debug-task-every-10-seconds': {
+                'task': 'todoapp.mailinglist.tasks.notify_subscribers_about_weekly_news',
+                'schedule': 10.0,
+            }
+        }
+
+
 
 @app.task(bind=True)
 def debug_task(self):

@@ -20,7 +20,13 @@ postgres=# grant all privileges on database mydb to myuser;
 postgres=# SELECT * FROM pg_settings WHERE name='port';
 ```
 
-# Apache + mod_wsgi [Wiki](https://wiki.archlinux.org/index.php/Apache_HTTP_Server)
+#### Apache [Wiki](https://wiki.archlinux.org/index.php/Apache_HTTP_Server)
+
+```
+sudo systemctl -l [enable|start|status|reload] httpd.service
+```
+
+# Apache + mod_wsgi 
 
 ```
 sudo pacman -S apache mod_wsgi

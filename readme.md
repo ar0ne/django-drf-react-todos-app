@@ -24,36 +24,36 @@ etc.
 [] Redis
 
 
-## Deployment to Apache
+## Deployment
 
 See `deployment` directory for details.
 
 ```
-sudo pip install -r requirements/prod.txt
+$ pip install -r requirements/prod.txt
 
-cd todo-app
+$ cd todo-app
 
-python manage.py migrate --run-syncdb --settings=config.settings.production
+$ python manage.py migrate --run-syncdb --settings=config.settings.production
 
-python manage.py collectstatic --settings=config.settings.production --no-input
+$ python manage.py collectstatic --settings=config.settings.production --no-input
 
-python manage.py createsuperuser --settings=config.settings.production
-
-sudo systemctl -l reload httpd.service
-
-sudo systemctl -l status httpd.service
-
+$ python manage.py createsuperuser --settings=config.settings.production
 ```
 
-
-## Redis
+## Redis + Celery
 
 ```
-cd todo-app
-celery worker -A todoapp.taskapp -l info
+$ cd todo-app
+$ celery worker -A todoapp.taskapp -l info
+$ celery beat -A todoapp.taskapp -l info
 ```
 
 ```
-docker run -d -p 6379:6379 redis
+$ docker run -d -p 6379:6379 redis
 ```
+
+
+## Ideas
+
+* Confirm registration by email (task for celery)
 

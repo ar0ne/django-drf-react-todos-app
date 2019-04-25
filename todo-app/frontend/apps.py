@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class FrontendConfig(AppConfig):
-    name = 'todoapp.frontend'
+    name = 'frontend'
     verbose_name = "Frontend"

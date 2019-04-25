@@ -15,11 +15,8 @@ function getAll() {
         headers: userService.getAuthHeaders()
     }
     return fetch('/api/basket/', requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
 }
 
 function addTask(basket_id, task) {
@@ -30,11 +27,8 @@ function addTask(basket_id, task) {
     }
 
     return fetch(`/api/basket/${basket_id}/add/`, requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
 }
 
 
@@ -46,11 +40,8 @@ function updateTasks(basket_id, task) {
     }
 
     return fetch(`/api/basket/${basket_id}/tasks/${task.id}/`, requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
 }
 
 
@@ -61,11 +52,8 @@ function removeTask(basket_id, task_id) {
     }
 
     return fetch(`/api/basket/${basket_id}/tasks/${task_id}/`, requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
 }
 
 function addBasket(basket_name) {
@@ -78,11 +66,8 @@ function addBasket(basket_name) {
     }
 
     return fetch(`/api/basket/`, requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
 }
 
 function removeBasket(basket_id) {
@@ -92,10 +77,24 @@ function removeBasket(basket_id) {
     }
 
     return fetch(`/api/basket/${basket_id}/`, requestOptions)
-        .then(response => response.json())
-        .catch(error => {
-            console.log(error.message);
-            return []; // todo: fix
-        });
+        .then(response => isSuccessful(response) && response.json())
+        .catch(handleException);
+}
 
+function handleException(error) {
+    if (error.message == 401) {
+        handleUnauthorizedException();
+    }
+    return [];  // todo: fix
+}
+
+function isSuccessful(response) {
+    if (response.status !== 200) {
+        throw new Error(response.status);
+    }
+    return true;
+}
+
+function handleUnauthorizedException() {
+    userService.logout();
 }

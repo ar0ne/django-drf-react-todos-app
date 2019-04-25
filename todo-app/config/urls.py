@@ -5,5 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('todoapp.basket.urls')),
     path('api/', include('todoapp.user.urls')),
-    path('', include('todoapp.frontend.urls')),
+    path('', include('frontend.urls')),
 ]

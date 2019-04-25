@@ -31,6 +31,7 @@ class Baskets extends Component {
     refreshBasket = () => {
         basketService.getAll()
             .then(baskets => {
+                console.log(baskets);
                 this.setState({
                     baskets: baskets,
                 });
