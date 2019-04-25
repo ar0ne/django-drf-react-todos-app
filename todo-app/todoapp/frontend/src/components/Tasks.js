@@ -51,6 +51,16 @@ class Tasks extends Component {
             });
     }
 
+    renderDeadline(deadline_date) {
+        const now = +(new Date());
+        const deadline = +(new Date(deadline_date));
+        const dateClass = deadline && deadline > now ? "date-deadline" : "date-deadline missed";
+        return (<span
+            className={dateClass}>
+            {deadline_date}</span>
+        );
+    }
+
     render() {
         const { tasks } = this.state;
 
@@ -70,7 +80,7 @@ class Tasks extends Component {
                             name={task.id}
                             onChange={this.handleCheckboxChange}
                         />
-                        {task.message}
+                        {task.message} | {this.renderDeadline(task.deadline)}
 
                         <button
                             onClick={this.handleDelete}

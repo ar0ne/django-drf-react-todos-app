@@ -36,4 +36,4 @@ class Task(models.Model):
         return self.basket.is_owner(user)
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('deadline', 'created',)

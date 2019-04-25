@@ -6,7 +6,6 @@ from rest_framework import (
 )
 from rest_framework.response import Response
 
-
 from todoapp.basket.models import (
     Basket,
     Task,

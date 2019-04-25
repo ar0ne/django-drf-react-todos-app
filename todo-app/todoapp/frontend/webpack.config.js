@@ -1,4 +1,8 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+var path = require('path');
+
 module.exports = {
+  context: path.join(__dirname, 'assets'),
   watch: true,
   module: {
     rules: [
@@ -10,5 +14,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+        { from : 'css' }
+    ])
+  ]
 };

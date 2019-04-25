@@ -5,9 +5,9 @@
 
 node_modules/
 
-static/
 .vscode
 .env
 
-static/
-staticfiles/
+/**/static/*
+!/**/static/favicon.ico
+!/**/static/robot.txt
