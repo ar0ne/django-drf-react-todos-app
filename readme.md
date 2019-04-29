@@ -54,11 +54,29 @@ $ docker run -d -p 6379:6379 redis
 
 ## Email test server
 
+*Note*: Check that django config has next value: *'DJANGO_EMAIL_BACKEND': 'django.core.mail.backends.smtp.EmailBackend'*. 
+
+If you use 'django.core.mail.backends.console.EmailBackend', it will not receive any emails.
+
 ```
 python -m smtpd -n -c DebuggingServer localhost:1025
+```
+
+### Draw class diagram
+
+If you'd like to get class diagram of the application, check that you 
+have required libs (e.g. [pygraphviz](https://django-extensions.readthedocs.io/en/latest/graph_models.html)
+
+```
+sudo pacman -S graphviz
+```
+And then you could generate class diagram image by:
+```
+$ python manage.py graph_models -a -g -o ../class_diagram.png
 ```
 
 ## Ideas
 
 * Confirm registration by email (task for celery)
+
 

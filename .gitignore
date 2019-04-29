@@ -13,3 +13,5 @@ node_modules/
 !/**/static/robot.txt
 
 celerybeat*
+
+class_diagram.png
