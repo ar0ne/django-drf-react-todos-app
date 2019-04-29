@@ -1,6 +1,35 @@
 [
   {
-    "model": "common.task",
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "argon2$argon2i$v=19$m=512,t=2,p=2$QjA4VWtWZ1FNMFVa$4vSs2DPW0+RJeTYEHs3+nw",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test",
+      "first_name": "",
+      "last_name": "",
+      "email": "test@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-04-29T09:13:56.661Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.profile",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "subscriptions": [
+        "MD",
+        "WN"
+      ]
+    }
+  },
+  {
+    "model": "basket.task",
     "pk": 1,
     "fields": {
       "message": "Math",
@@ -11,7 +40,7 @@
     }
   },
   {
-    "model": "common.task",
+    "model": "basket.task",
     "pk": 2,
     "fields": {
       "message": "English language",
@@ -22,7 +51,7 @@
     }
   },
   {
-    "model": "common.task",
+    "model": "basket.task",
     "pk": 3,
     "fields": {
       "message": "Spanish language",
@@ -33,18 +62,18 @@
     }
   },
   {
-    "model": "common.basket",
+    "model": "basket.basket",
     "pk": 1,
     "fields": {
       "title": "Homework",
-      "owner": 1
+      "owner": 2
     }
   },
   {
     "model": "mailinglist.subscription",
     "pk": 1,
     "fields": {
-      "name": "WD"
+      "name": "WN"
     }
   },
   {

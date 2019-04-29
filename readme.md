@@ -52,6 +52,11 @@ $ celery beat -A todoapp.taskapp -l info
 $ docker run -d -p 6379:6379 redis
 ```
 
+## Email test server
+
+```
+python -m smtpd -n -c DebuggingServer localhost:1025
+```
 
 ## Ideas
 

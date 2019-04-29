@@ -171,6 +171,8 @@ X_FRAME_OPTIONS = 'DENY'
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
+MAILING_LIST_FROM_EMAIL = env('MAILING_LIST_FROM_EMAIL', default="no-reply@todo.app")
+
 
 if USE_TZ:
     # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
