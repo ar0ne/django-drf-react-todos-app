@@ -1,4 +1,4 @@
-from config.settings.common import *
+from config.settings.base import *
 
 DEBUG = True
 

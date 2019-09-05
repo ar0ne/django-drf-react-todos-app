@@ -1,5 +1,4 @@
-from config.settings.common import *
-from config.settings.common import env
+from config.settings.base import *
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 

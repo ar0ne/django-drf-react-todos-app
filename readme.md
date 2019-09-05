@@ -1,4 +1,8 @@
-## Yet another TODOs app [DRF + ReactJS]
+## Intro
+
+This's Yet another TODOs app based on DRF and ReactJS.
+
+### Build
 
 `$ python3 -m venv env`
 
@@ -13,16 +17,6 @@ etc.
 `$ npm i`
 
 `$ npm run dev`
-
-## Ideas
-
-[] Elastic Search
-[] Docker / Docker-compose
-[] Deployment scripts
-[] Nginx
-[] Celery for notification about tasks
-[] Redis
-
 
 ## Deployment
 
@@ -59,7 +53,7 @@ $ docker run -d -p 6379:6379 redis
 If you use 'django.core.mail.backends.console.EmailBackend', it will not receive any emails.
 
 ```
-python -m smtpd -n -c DebuggingServer localhost:1025
+$ python -m smtpd -n -c DebuggingServer localhost:1025
 ```
 
 ### Draw class diagram
@@ -68,15 +62,11 @@ If you'd like to get class diagram of the application, check that you
 have required libs (e.g. [pygraphviz](https://django-extensions.readthedocs.io/en/latest/graph_models.html)
 
 ```
-sudo pacman -S graphviz
+$ sudo pacman -S graphviz
 ```
 And then you could generate class diagram image by:
 ```
 $ python manage.py graph_models -a -g -o ../class_diagram.png
 ```
-
-## Ideas
-
-* Confirm registration by email (task for celery)
 
 
